@@ -10,7 +10,7 @@ public class BaseTest {
     @BeforeMethod
     public void setup(){
     ChromeOptions options = new ChromeOptions();
-    // options.addArguments("--headless=new");
+    options.addArguments("--headless=new");
     options.addArguments("--no-sandbox");
     options.addArguments("--disable-dev-shm-usage");
 
