@@ -20,6 +20,8 @@ public class LoginPage {
     By username = By.name("username");
     By password = By.name("password");
     By loginButton = By.xpath("//button[@type='submit']");
+    By invalid  = By.xpath("//p[text()='Invalid credentials']");
+    By valid = By.xpath("//h6[text()='Dashboard']");
 
     // Actions
     public void enterUsername(String user) {
@@ -45,4 +47,19 @@ public class LoginPage {
         enterPassword(pass);
         clickLogin();
     }
+    public boolean invalidCredentials(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(invalid));
+        return driver.findElement(invalid).isDisplayed();
+        
+    }
+
+    public boolean validCredentials(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(valid));
+        return driver.findElement(valid).isDisplayed();
+        
+    }
+
+
 }
